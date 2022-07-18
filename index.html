@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dog&ball game</title>
+    <style>
+        body{
+            background-color: cadetblue;
+            overflow: hidden;
+        }
+         .header{
+            background-color: darkgreen;
+            width: 50%;
+            margin: 1% 25% ;
+            text-align: center;
+            border-radius: 10px;
+           
+        }
+        .score{
+            width: 50%;
+            margin: 0% 25% 1%;
+            text-align: center;
+            border-radius: 10px;
+
+        }
+       .grid-container{
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;        
+            width: 60%;
+            margin: auto;
+            border-radius: 10px;
+            border: 1px solid sienna;
+            
+
+        }
+        
+        .grid_item{
+           
+            border:1px solid black;
+            text-align: center;
+            padding: 10px;
+            
+        }
+        .wall{
+            background-color: sienna;
+            color: whitesmoke;
+        }
+       
+        .mgsbox{
+            position: absolute;
+            background-color: snow;
+            width: 30%;
+            height: 100px;
+            top: 35%;
+            border-radius: 10px;;
+
+        }
+        .start_button{
+            background-color: lightblue;
+            border-radius: 8px;
+            width: 12%;
+            margin: 0% 45% 0.5%;
+            font-size: 20px;
+        }
+        .field{
+            border: none;
+        }
+
+        .messagebox{
+            position: absolute;
+            width: 30%;
+            height: 200px;
+            left: 35%;
+            right: 35%;
+            top: 30%;
+            background-color: cadetblue;
+            border-radius: 10px;
+
+            
+        }
+        .messagebox_container{
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            top: 2px;
+            background-color: rgba(0,0,0, 0.9);
+            z-index: 2000;
+        }
+        .messagebox-conent{
+         
+            font-size:45px;
+            text-align: center;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <h1 class="header">DOG & BALL </h1>
+        <h2 class="score">SCORE:<span id="result">00</span></h2>
+        <div class="messagebox_container">
+            <div class="messagebox">
+                 <div class="messagebox-conent">GAME OVER</div><br>
+                <div class="messagebox-conent">SCORE</div><br>
+                 <div class="messagebox-conent" id="final_score">00</div>
+            </div>
+        </div>
+       <button class="start_button">start</button>
+        <div class="grid-container">
+            <div class="grid_item wall left_wall " style="border-top-left-radius: 10px ;">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall right_wall" style="border-top-right-radius: 10px ;" >.</div>
+            <div class="grid_item wall left_wall">W</div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field wall" >D</div>
+            <div class="grid_item wall right_wall">.</div>
+            <div class="grid_item wall left_wall">O</div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field wall">O</div>
+            <div class="grid_item wall right_wall">.</div>
+            <div class="grid_item wall left_wall">R</div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field wall">G</div>
+            <div class="grid_item wall right_wall">.</div>
+            <div class="grid_item wall left_wall">K</div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field wall">.</div>
+            <div class="grid_item wall right_wall">.</div>
+            <div class="grid_item wall left_wall">.</div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field wall">&</div>
+            <div class="grid_item wall right_wall">.</div>
+            <div class="grid_item wall left_wall">H</div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field wall"></div>
+            <div class="grid_item wall right_wall">.</div>
+            <div class="grid_item wall left_wall">A</div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field wall">B</div>
+            <div class="grid_item wall right_wall">.</div>
+            <div class="grid_item wall left_wall">R</div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field wall">A</div>
+            <div class="grid_item wall right_wall">.</div>
+            <div class="grid_item wall left_wall">D</div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field wall">L</div>
+            <div class="grid_item wall right_wall">.</div>
+            <div class="grid_item wall left_wall">.</div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field"></div>
+            <div class="grid_item field wall">L</div>
+            <div class="grid_item wall right_wall">.</div>
+            <div class="grid_item wall left_wall" style="border-bottom-left-radius: 10px ;">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall">.</div>
+            <div class="grid_item wall right_wall" style="border-bottom-right-radius: 10px ;">.</div>
+            
+
+        </div>
+        <script>
+           var startme = document.querySelector(".start_button");
+           startme.addEventListener("click", startnow);
+
+          
+                    var index;  // it reprents the possition of elements in the field.
+                    var mykeycode; 
+                    var oldkeycode;
+                    var applePosition;
+                    var mypos;     //to know the position of a block at a particular line.
+                    var  myinterval;
+                    var Score;
+                    var speed=500;
+
+                var field = document.querySelectorAll(".field");
+                const dog = document.createElement("span");
+                const ball = document.createElement("span");
+                var myScore = document.getElementById('result');
+            // this is the result box container
+                var mymgsbox= document.querySelector(".messagebox_container");
+                mymgsbox.style.visibility='hidden';
+                mymgsbox.addEventListener("click", restart);
+
+            // this is the function to start the game;
+            function startnow(){
+                startme.style.visibility='hidden';
+                mykeycode=39;
+                oldkeycode=37;
+                index=1;
+                Score=0;
+                applePosition= getRondomNumber();
+                dog.style.backgroundColor="red";
+                dog.textContent="D";
+                dog.style.padding= "8px";
+               dog.borderRadius="10px";
+                field[index].appendChild(dog);
+
+                // ball styling
+                ball.style.backgroundColor="lightgreen";
+                ball.textContent="B";
+                ball.style.padding="8px";
+                ball.style.borderRadius="100%";
+                field[applePosition].appendChild(ball);
+
+               
+               myinterval =  setInterval(moveNow , speed);
+                
+            }
+            function moveNow(){
+                field[index].removeChild(dog);
+                var  myint;
+                // 1. right arrow
+                if(mykeycode==39){
+                    // this if is used to check if index has one or two digits;
+                     if(index>9){
+                      myint = String(index)[1];
+                      mypos = Number(myint);
+                    }else{
+                       myint= String(index)[0];
+                       mypos = Number(myint);
+                    }
+                    if(mypos + 1 == 9 ){
+                        // here we need to display the result
+                            gameover();
+                                
+                    }else{
+                        index=index +1;
+                        field[index].appendChild(dog);
+                    }
+                   // 2. down arrow 
+                }else if(mykeycode==40){
+                    // this if is used to check if index has one or two digits;
+                    
+                      myint = String(index)[0];
+                      mypos = Number(myint);
+                   
+                    
+                    if(mypos + 1 == 10){
+                        // here we need to display the result
+                        gameover();
+
+                    }else{
+                        index=index + 10;
+                        field[index].appendChild(dog);
+                    }
+                    // 3. up arrrow
+                }else if(mykeycode==38){
+                    // this if is used to check if index has one or two digits and it get a digit;
+                     if(index>9){
+                         myint = String(index)[0];
+                        mypos = Number(myint);
+                    }else{
+                       mypos = 0;
+                    }
+                    
+                    if(mypos - 1 == -1){
+                        // here we need to display the result
+                        gameover();
+                        
+                    }else{
+                        index=index - 10;
+                        field[index].appendChild(dog);
+                    }
+                }else{
+                    // 4 . left arrow
+                     if(index>9){
+                      myint = String(index)[1];
+                      mypos = Number(myint);
+                    }else{
+                        myint = Number(myint);
+                       mypos= String(index)[0];
+                    }
+                    
+                    if(mypos - 1 == -1){
+                        // here we need to display the result
+                       gameover();
+
+                    }else{
+                        index=index - 1;
+                        field[index].appendChild(dog);
+                    }
+                }
+              
+                eatapple();
+
+                
+               
+            }   
+
+            // this is my function to listen to the keystrokes from the keyboard
+
+            document.onkeydown= function(e){
+                
+                if(e.keyCode==40 || e.keyCode==39 || e.keyCode==38 || e.keyCode==37){
+                    
+                    if((mykeycode==40 && e.keyCode==38)){
+                        mykeycode=40;
+                    }else if((mykeycode==37 && e.keyCode==39)){
+                        mykeycode=37;
+                    }else if((mykeycode==38 && e.keyCode==40)){
+                        mykeycode==38;
+                    }else if((mykeycode==39 && e.keyCode==37)){
+                        mykeycode=39;  
+                    }else{
+                        mykeycode=e.keyCode;
+                    }
+                }  
+               
+            }
+            // function when an ball is eaten
+            function eatapple(){
+
+                if(index==applePosition){
+                    field[applePosition].removeChild(ball);
+                    applePosition=getRondomNumber();
+                    field[applePosition].appendChild(ball);
+                    speed -= 10;
+
+                    Score ++;
+
+                    if(Score>9){
+                     document.getElementById("result").innerHTML= Score.toString();
+
+                    }else{
+                        document.getElementById("result").innerHTML = "0" + Score.toString();
+                    }
+                   //since it is difficult to modify the time interval in setInterval am forced to clear the inteval and set it back
+                
+                clearInterval(myinterval);
+                myinterval =  setInterval(moveNow , speed);
+                }
+                
+
+            }
+            
+            // function to get the random number
+            
+           function getRondomNumber(){
+                   var x;
+                    var flag;
+               do{
+                 x = Math.floor((Math.random() * 99) + 2);
+
+                    var me = x.toString();
+                    var i=0;
+                    flag=0;
+                    while(i<me.length){
+                            if(me[i]=='0' || me[i]=='9'){
+                                flag ++;
+                            }
+                            i++;
+                    }   
+                }while(flag!=0);
+                    return x;
+           }
+
+           function restart(){
+              
+                mymgsbox.style.visibility='hidden';  
+                startme.style.visibility='visible';
+                document.getElementById("result").innerHTML="00";
+                field[applePosition].removeChild(ball);
+                field[index].removeChild(dog);         
+           }
+
+           function gameover(){
+               speed=500;
+               clearInterval(myinterval);
+               var putscore = document.querySelector("#final_score");
+               putscore.innerHTML=Score;
+               mymgsbox.style.visibility='visible';
+
+           }
+            
+        </script>
+    
+</body>
+</html>
